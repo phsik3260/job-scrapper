@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>아르바이트 검색 사이트</title>
+    <style>
+      section {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>장유넷 "{{searchingBy}}" 검색 결과: {{resultsNumber}}개</h1>
+    <a href="/export?word={{searchingBy}}">CSV 파일로 다운로드</a>
+    <section>
+      <h4>공고</h4>
+      <h4>회사명</h4>
+      <h4>지역</h4>
+      <h4>링크</h4>
+      {% for job in jobs %}
+        <span>{{job.title}}</span>
+        <span>{{job.company}}</span>
+        <span>{{job.location}}</span>
+        <a href="{{job.link}}" target="_blank">이곳을 눌러 자세한 정보 확인하기</a>
+      {% endfor %}
+    </section>
+  </body>
+</html>
